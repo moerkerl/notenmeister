@@ -1,103 +1,261 @@
-import Image from "next/image";
+'use client'
+
+import { useRouter } from 'next/navigation'
+import LPHero from '@/components/LPHero'
+import LPBenefits from '@/components/LPBenefits'
+import LPSection from '@/components/LPSection'
+import LPSteps from '@/components/LPSteps'
+import LPTestimonial from '@/components/LPTestimonial'
+import LPOffers from '@/components/LPOffers'
+import AnimatedText from '@/components/AnimatedText'
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const router = useRouter()
+  
+  const benefits = [
+    {
+      icon: '🏠',
+      title: 'Privatunterricht zuhause oder online',
+      description: 'Flexible Nachhilfe in der ganzen Schweiz und Umgebung'
+    },
+    {
+      icon: '👥',
+      title: 'Für alle Altersgruppen',
+      description: 'Von der Primarschule bis zur Universität'
+    },
+    {
+      icon: '🎯',
+      title: 'Nachhaltige Erfolge feiern',
+      description: 'Langfristige Verbesserung und echte Lernerfolge'
+    }
+  ]
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const steps = [
+    {
+      number: 1,
+      title: 'Auf "Jetzt Nachhilfe-Lehrer finden" klicken',
+      description: 'Beantworten Sie online einige kurze Fragen um potentielle Nachhilfe-Lehrer in der Schweiz zu identifizieren.'
+    },
+    {
+      number: 2,
+      title: 'Strategiegespräch führen',
+      description: 'Zusammen mit einem Lernstrategen erstellen Sie einen Plan, um im Rahmen ihres Budgets die gewünschten Ergebnisse zu erzielen.'
+    },
+    {
+      number: 3,
+      title: 'Lektionen starten. Erfolge feiern',
+      description: 'Nach einer unverbindlichen Probelektion setzt unser Team den Plan um und verbessert die akademischen Fähigkeiten und das Selbstvertrauen des Schülers.'
+    }
+  ]
+
+  const testimonials = [
+    {
+      name: 'Familie Weber aus Bern',
+      text: 'Dank Notenmeister hat unser Sohn wieder Freude am Lernen gefunden. Die 3-Phasen-Methodik hat wirklich funktioniert - aus der Abwärtsspirale wurde eine Erfolgsspirale. Wir können Notenmeister nur weiterempfehlen.',
+      rating: 5
+    },
+    {
+      name: 'Familie Müller aus Zürich',
+      text: 'Die 6-Schritte-Methode von Notenmeister hat unserer Tochter geholfen, ihre Lernblockaden zu überwinden. Sie ist jetzt selbstbewusster und ihre Noten haben sich deutlich verbessert.',
+      rating: 5
+    }
+  ]
+
+  const offers = [
+    {
+      icon: '📚',
+      title: 'Lerncoaching',
+      description: 'Unsere Lerncoaches gehen auf die individuellen Baustellen ihrer Schüler ein. Hier steht ganzheitliches Lerncoaching im Vordergrund. Ziel ist es, dem Schüler das Lernen beizubringen.'
+    },
+    {
+      icon: '🎓',
+      title: 'Gymi-Vorbereitung',
+      description: 'Unsere Gymi-Spezialisten bereiten ihre Schüler im Einzelunterricht optimal auf die Gymi-Prüfung vor. Dabei gehen wir auf Ihre Wünsche ein und unterstützen in allen Bereichen.'
+    },
+    {
+      icon: '📐',
+      title: 'Fachspezifische Nachhilfe',
+      description: 'Unsere Fachspezialisten helfen ihren Schülern dort, wo diese am meisten Mühe haben. Der Fokus liegt auf spezifischen fachlichen Baustellen.'
+    }
+  ]
+
+  return (
+    <>
+      {/* Hero Section */}
+      <LPHero
+        title={
+          <>
+            <span className="inline-block">Ihre persönliche</span>{' '}
+            <span className="inline-block">
+              <AnimatedText text="Auswahl an Nachhilfe-Lehrern" />
+            </span>
+          </>
+        }
+        subtitle="Beantworten Sie ein paar Fragen und erhalten Sie sofort passende Lehrer-Vorschläge aus Ihrer Region."
+        buttonText="Jetzt Nachhilfe-Lehrer finden"
+        imageSrc="/Vater-Tochter_Lerneinheit_mit_Freude_20250318_192428.jpg"
+        imageAlt="Erfolgreiche Nachhilfe - Vater und Tochter lernen gemeinsam mit Freude"
+      />
+
+      {/* Benefits */}
+      <LPBenefits benefits={benefits} />
+
+      {/* Problem Section - Die 3-Phasen-Abwärtsspirale */}
+      <LPSection
+        title="Die gefährliche 3-Phasen-Abwärtsspirale"
+        content="Viele Schüler geraten in einen Teufelskreis aus schlechten Noten, sinkendem Selbstvertrauen und weiteren Misserfolgen."
+        bulletPoints={[
+          'Phase 1: Erste schlechte Noten entstehen - oft unbemerkt',
+          'Phase 2: Selbstvertrauen sinkt, Motivation geht verloren',
+          'Phase 3: Lernblockaden entstehen, Abwärtsspirale verstärkt sich',
+          'Resultat: Potenzial wird nicht ausgeschöpft, Zukunft gefährdet'
+        ]}
+        buttonText="Jetzt Nachhilfe-Lehrer finden"
+        imageSrc="/fuenftklaessler-mathe-niedergeschlagen-frust-schreibtisch-alleine-mathe-helden.jpg"
+        imageAlt="Frustrierter Schüler alleine am Schreibtisch - Die Abwärtsspirale"
+        imagePosition="left"
+        backgroundColor="gray"
+      />
+
+      {/* Solution Section - Custom Layout mit 6-Schritte-Methodik */}
+      <section className="py-20 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Column - Title, Subtitle, Button */}
+            <div className="space-y-6">
+              <p className="text-[#059669] font-semibold uppercase tracking-wide text-sm">
+                Die Notenmeister-Lösung
+              </p>
+              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
+                Unsere bewährte 6-Schritte-Methodik
+              </h2>
+              <p className="text-lg text-gray-600">
+                Mit über 7&apos;000 erfolgreichen Lehrern schweizweit haben wir eine Methodik entwickelt, die aus der Abwärtsspirale eine Erfolgsspirale macht.
+              </p>
+              <button 
+                onClick={() => router.push('/lehrer-finden')}
+                className="bg-[#059669] text-white px-8 py-4 rounded-lg hover:bg-[#047857] transition-colors font-semibold shadow-lg cursor-pointer"
+              >
+                Jetzt Nachhilfe-Lehrer finden
+              </button>
+            </div>
+
+            {/* Right Column - 6 Schritte Visualisierung */}
+            <div className="relative">
+              {/* Background Graphic - Erfolgsspirale */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-10">
+                <svg className="w-full h-full max-w-md" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M200 50 Q300 100 350 200 Q300 300 200 350 Q100 300 50 200 Q100 100 200 50" 
+                        stroke="#059669" strokeWidth="3" fill="none" strokeDasharray="8 4" />
+                  <path d="M200 80 Q280 120 320 200 Q280 280 200 320 Q120 280 80 200 Q120 120 200 80" 
+                        stroke="#059669" strokeWidth="2" fill="none" strokeDasharray="6 3" />
+                  <circle cx="200" cy="80" r="8" fill="#059669" />
+                  <circle cx="320" cy="200" r="8" fill="#059669" />
+                  <circle cx="200" cy="320" r="8" fill="#059669" />
+                  <text x="200" y="200" textAnchor="middle" fill="#059669" fontSize="16" fontWeight="bold">↗</text>
+                </svg>
+              </div>
+
+              {/* 6 Schritte Card */}
+              <div className="relative bg-gradient-to-br from-green-50 to-white p-8 rounded-2xl shadow-xl border border-green-100">
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-[#059669] text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
+                    <p className="text-sm font-medium text-gray-800">Lerntyp-Analyse</p>
+                  </div>
+                  
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-[#059669] text-white rounded-full flex items-center justify-center text-sm font-bold">2</div>
+                    <p className="text-sm font-medium text-gray-800">Massgeschneiderte Lernstrategie</p>
+                  </div>
+                  
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-[#059669] text-white rounded-full flex items-center justify-center text-sm font-bold">3</div>
+                    <p className="text-sm font-medium text-gray-800">Selbstvertrauen aufbauen</p>
+                  </div>
+                  
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-[#059669] text-white rounded-full flex items-center justify-center text-sm font-bold">4</div>
+                    <p className="text-sm font-medium text-gray-800">Lernblockaden lösen</p>
+                  </div>
+                  
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-[#059669] text-white rounded-full flex items-center justify-center text-sm font-bold">5</div>
+                    <p className="text-sm font-medium text-gray-800">Nachhaltige Lerntechniken</p>
+                  </div>
+                  
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-[#059669] text-white rounded-full flex items-center justify-center text-sm font-bold">6</div>
+                    <p className="text-sm font-medium text-gray-800">Autonomes Lernen erreichen</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+      </section>
+
+      {/* Success Section */}
+      <LPSection
+        title="Erfolgsgeschichten sprechen für sich"
+        content="Aus der Abwärtsspirale wird eine Erfolgsspirale - sehen Sie selbst, wie Notenmeister das Leben von Schülern und Familien verändert hat."
+        buttonText="Jetzt Nachhilfe-Lehrer finden"
+        imageSrc="/fuenftklaessler-eltern-mathe-familienfreude-positiv-verstanden-zuhause-mathe-helden.jpg"
+        imageAlt="Glückliche Familie feiert gemeinsam Lernerfolge"
+        imagePosition="right"
+        backgroundColor="white"
+      />
+
+      {/* 3 Steps */}
+      <LPSteps
+        title="In 3 einfachen Schritten zu besseren Noten"
+        steps={steps}
+        ctaText="Jetzt Nachhilfe-Lehrer finden"
+      />
+
+      {/* Testimonials */}
+      <LPTestimonial
+        title="Erfolgsgeschichten aus der ganzen Schweiz"
+        testimonials={testimonials}
+      />
+
+      {/* Offers */}
+      <LPOffers
+        title="Unsere Angebote in der ganzen Schweiz"
+        offers={offers}
+      />
+
+      {/* Final CTA Section */}
+      <section className="py-20 lg:py-24 bg-green-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center space-y-8">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
+              Durchbrechen Sie den Teufelskreis - Jetzt!
+            </h2>
+            
+            <div className="space-y-6 text-lg text-gray-700 text-left">
+              <p>
+                Über 15&apos;000 Schüler und Studenten haben bereits mit Notenmeister den Weg aus der 3-Phasen-Abwärtsspirale gefunden. Unsere bewährte 6-Schritte-Methodik verwandelt Lernfrust in Lernerfolg und macht aus schwachen Schülern selbstbewusste Lerner.
+              </p>
+              
+              <p>
+                Mit über 7&apos;000 qualifizierten Lehrern in der ganzen Schweiz finden wir für jeden Schüler den passenden Nachhilfelehrer. Ob zuhause oder online - wir bringen den Erfolg direkt zu Ihnen.
+              </p>
+              
+              <p>
+                Warten Sie nicht, bis es zu spät ist. Je früher Sie handeln, desto schneller können wir die Abwärtsspirale stoppen und eine Erfolgsspirale in Gang setzen.
+              </p>
+            </div>
+            
+            <button 
+              onClick={() => router.push('/lehrer-finden')}
+              className="bg-[#059669] text-white px-8 py-4 rounded-lg hover:bg-[#047857] transition-colors font-semibold text-lg shadow-lg cursor-pointer"
+            >
+              Jetzt Nachhilfe-Lehrer finden
+            </button>
+          </div>
+        </div>
+      </section>
+    </>
+  )
 }
