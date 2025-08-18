@@ -50,12 +50,12 @@ export default function Home() {
 
   const testimonials = [
     {
-      name: 'Familie Weber aus Bern',
+      name: 'Familie Kessler aus Bern',
       text: 'Dank Notenmeister hat unser Sohn wieder Freude am Lernen gefunden. Die 3-Phasen-Methodik hat wirklich funktioniert - aus der Abwärtsspirale wurde eine Erfolgsspirale. Wir können Notenmeister nur weiterempfehlen.',
       rating: 5
     },
     {
-      name: 'Familie Müller aus Zürich',
+      name: 'Familie Rietmann aus Zürich',
       text: 'Die 6-Schritte-Methode von Notenmeister hat unserer Tochter geholfen, ihre Lernblockaden zu überwinden. Sie ist jetzt selbstbewusster und ihre Noten haben sich deutlich verbessert.',
       rating: 5
     }
