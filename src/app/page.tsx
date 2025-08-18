@@ -93,8 +93,8 @@ export default function Home() {
         }
         subtitle="Beantworten Sie ein paar Fragen und erhalten Sie sofort passende Lehrer-Vorschläge aus Ihrer Region."
         buttonText="Jetzt Nachhilfe-Lehrer finden"
-        imageSrc="/Vater-Tochter_Lerneinheit_mit_Freude_20250318_192428.jpg"
-        imageAlt="Erfolgreiche Nachhilfe - Vater und Tochter lernen gemeinsam mit Freude"
+        imageSrc="/images/Beratungsgespräch_im_modernen_Büro_20250318_192326.jpg"
+        imageAlt="Professionelle Beratung - Expertin erklärt Lernkonzept im modernen Büro"
       />
 
       {/* Benefits */}
@@ -111,8 +111,8 @@ export default function Home() {
           'Resultat: Potenzial wird nicht ausgeschöpft, Zukunft gefährdet'
         ]}
         buttonText="Jetzt Nachhilfe-Lehrer finden"
-        imageSrc="/fuenftklaessler-mathe-niedergeschlagen-frust-schreibtisch-alleine-mathe-helden.jpg"
-        imageAlt="Frustrierter Schüler alleine am Schreibtisch - Die Abwärtsspirale"
+        imageSrc="/images/Tochter_5_Klasse_Alleine_stark-frustriert.jpg"
+        imageAlt="Frustrierte Schülerin alleine am Tisch - Die Abwärtsspirale des Lernfrustss"
         imagePosition="left"
         backgroundColor="gray"
       />
@@ -200,8 +200,8 @@ export default function Home() {
         title="Erfolgsgeschichten sprechen für sich"
         content="Aus der Abwärtsspirale wird eine Erfolgsspirale - sehen Sie selbst, wie Notenmeister das Leben von Schülern und Familien verändert hat."
         buttonText="Jetzt Nachhilfe-Lehrer finden"
-        imageSrc="/fuenftklaessler-eltern-mathe-familienfreude-positiv-verstanden-zuhause-mathe-helden.jpg"
-        imageAlt="Glückliche Familie feiert gemeinsam Lernerfolge"
+        imageSrc="/images/Gemeinsames_Lernen_am_Küchentisch_20250318_192448_Mutter_Tochter.jpg"
+        imageAlt="Mutter und Tochter lernen erfolgreich gemeinsam am Küchentisch"
         imagePosition="right"
         backgroundColor="white"
       />
