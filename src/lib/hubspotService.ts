@@ -14,6 +14,7 @@ interface HubSpotContactData {
   sucht_nachhilfe_fur?: string;
   schulstufe_kind?: string;
   utm_website_contact?: string;
+  land?: string;
   // Tracking parameters - HubSpot specific fields
   hs_google_click_id?: string;
   utm_campaign_contact?: string;
@@ -293,6 +294,7 @@ export function mapPortalDataToHubSpot(data: PortalFormData): HubSpotContactData
     sucht_nachhilfe_fur: mapWerBrauchtNachhilfe(data.schueler),
     schulstufe_kind: mappedGrade,
     utm_website_contact: websiteContact,
+    land: data.language === 'english' ? 'Schweiz Englischsprachig' : 'Schweiz',
   };
   
   // Add only the specific HubSpot tracking fields
