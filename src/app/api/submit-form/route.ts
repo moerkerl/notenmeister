@@ -10,6 +10,9 @@ interface FormData {
   nachname: string;
   telefon: string;
   email: string;
+  // Language marker
+  language?: 'english' | 'german';
+  utm_website_contact?: string;
   // Tracking parameters
   gclid?: string;
   utm_source?: string;

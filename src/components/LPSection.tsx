@@ -13,6 +13,7 @@ interface LPSectionProps {
   imagePosition?: 'left' | 'right'
   backgroundColor?: 'white' | 'gray'
   onButtonClick?: () => void
+  isEnglish?: boolean
 }
 
 export default function LPSection({
@@ -24,7 +25,8 @@ export default function LPSection({
   imageAlt,
   imagePosition = 'right',
   backgroundColor = 'white',
-  onButtonClick
+  onButtonClick,
+  isEnglish = false
 }: LPSectionProps) {
   const router = useRouter()
   
@@ -32,7 +34,7 @@ export default function LPSection({
     if (onButtonClick) {
       onButtonClick()
     } else if (buttonText) {
-      router.push('/lehrer-finden')
+      router.push(isEnglish ? '/find-teacher' : '/lehrer-finden')
     }
   }
 

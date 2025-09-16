@@ -7,6 +7,7 @@ declare global {
       (command: 'js', date: Date): void;
       (command: 'consent', action: string, config?: { [key: string]: any }): void;
       (command: 'set', config: { [key: string]: any }): void;
+      (command: 'set', targetProperty: string, config: { [key: string]: any }): void;
     };
   }
 }

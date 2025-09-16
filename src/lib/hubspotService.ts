@@ -37,6 +37,9 @@ interface PortalFormData {
   nachname: string;
   telefon: string;
   email: string;
+  // Language marker
+  language?: 'english' | 'german';
+  utm_website_contact?: string;
   // Tracking parameters
   gclid?: string;
   utm_source?: string;
@@ -270,6 +273,13 @@ export const hubspotService = HubSpotService.getInstance();
  * Convert Portal form data to HubSpot contact format
  */
 export function mapPortalDataToHubSpot(data: PortalFormData): HubSpotContactData {
+  // Determine website contact based on language
+  const websiteContact = data.utm_website_contact || 
+    (data.language === 'english' ? 'notenmeister.ch/en' : 'notenmeister.ch');
+  
+  // Map grade from English to German if needed
+  const mappedGrade = data.language === 'english' ? mapEnglishGradeToGerman(data.klasse) : data.klasse;
+  
   const hubspotData: HubSpotContactData = {
     email: data.email,
     lastname: data.nachname,
@@ -281,8 +291,8 @@ export function mapPortalDataToHubSpot(data: PortalFormData): HubSpotContactData
     kontakt_hat_lead_formular_ausgefullt: 'Ja',
     was_fur_nachhilfe_benotigt_ihr_sohn_: data.fach,
     sucht_nachhilfe_fur: mapWerBrauchtNachhilfe(data.schueler),
-    schulstufe_kind: data.klasse,
-    utm_website_contact: 'notenmeister.ch',
+    schulstufe_kind: mappedGrade,
+    utm_website_contact: websiteContact,
   };
   
   // Add only the specific HubSpot tracking fields
@@ -310,7 +320,53 @@ function mapWerBrauchtNachhilfe(schueler: string): string {
     'mein-sohn': 'Mein Sohn',
     'ich': 'Ich',
     'jemand-anderes': 'Jemand anderes',
+    // English mappings
+    'my-daughter': 'Meine Tochter',
+    'my-son': 'Mein Sohn',
+    'i': 'Ich',
+    'someone-else': 'Jemand anderes',
   };
   
   return mappings[schueler] || 'Jemand anderes';
+}
+
+/**
+ * Map English grade to German equivalent
+ */
+function mapEnglishGradeToGerman(grade: string): string {
+  const mappings: Record<string, string> = {
+    // Primary School
+    '1st Grade Primary': '1. Klasse Primar',
+    '2nd Grade Primary': '2. Klasse Primar',
+    '3rd Grade Primary': '3. Klasse Primar',
+    '4th Grade Primary': '4. Klasse Primar',
+    '5th Grade Primary': '5. Klasse Primar',
+    '6th Grade Primary': '6. Klasse Primar',
+    // Secondary School
+    '1st Year Secondary A': '1. Sek A',
+    '1st Year Secondary B': '1. Sek B',
+    '1st Year Secondary C': '1. Sek C',
+    '2nd Year Secondary A': '2. Sek A',
+    '2nd Year Secondary B': '2. Sek B',
+    '2nd Year Secondary C': '2. Sek C',
+    '3rd Year Secondary A': '3. Sek A',
+    '3rd Year Secondary B': '3. Sek B',
+    '3rd Year Secondary C': '3. Sek C',
+    // Gymnasium
+    '1st Year Gymnasium': '1. Klasse Gymnasium',
+    '2nd Year Gymnasium': '2. Klasse Gymnasium',
+    '3rd Year Gymnasium': '3. Klasse Gymnasium',
+    '4th Year Gymnasium': '4. Klasse Gymnasium',
+    '5th Year Gymnasium': '5. Klasse Gymnasium',
+    '6th Year Gymnasium': '6. Klasse Gymnasium',
+    // Post-Secondary
+    'Apprenticeship': 'Lehre',
+    'University Studies': 'Studium',
+    'Vocational School': 'Berufsschule',
+    'University of Applied Sciences': 'Fachhochschule',
+    'University': 'Universität',
+    'Other': 'Sonstiges'
+  };
+  
+  return mappings[grade] || grade;
 }

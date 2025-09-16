@@ -11,6 +11,7 @@ interface LPHeroProps {
   imageSrc?: string
   imageAlt?: string
   onButtonClick?: () => void
+  isEnglish?: boolean
 }
 
 export default function LPHero({ 
@@ -19,7 +20,8 @@ export default function LPHero({
   buttonText, 
   imageSrc, 
   imageAlt,
-  onButtonClick
+  onButtonClick,
+  isEnglish = false
 }: LPHeroProps) {
   const router = useRouter()
   const [shouldHighlight, setShouldHighlight] = useState(false)
@@ -29,8 +31,8 @@ export default function LPHero({
     if (onButtonClick) {
       onButtonClick()
     } else {
-      // Navigate to form page
-      router.push('/lehrer-finden')
+      const formPath = isEnglish ? '/find-teacher' : '/lehrer-finden'
+      router.push(formPath)
     }
   }
 
@@ -111,9 +113,9 @@ export default function LPHero({
                 <button 
                   onClick={handleClick}
                   className={`
-                    bg-[#059669] text-white px-8 py-4 rounded-lg font-semibold text-lg shadow-lg
+                    bg-[#059669] text-white px-10 py-4 rounded-lg font-semibold text-lg shadow-lg
                     hover:bg-[#047857] hover:shadow-xl transform hover:-translate-y-0.5 
-                    transition-all cursor-pointer
+                    transition-all cursor-pointer whitespace-nowrap
                     ${shouldHighlight ? 'button-highlight ring-2 ring-green-400 ring-opacity-50' : ''}
                   `}
                 >

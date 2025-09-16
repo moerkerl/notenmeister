@@ -13,16 +13,18 @@ interface LPStepsProps {
   steps: Step[]
   ctaText?: string
   onCTAClick?: () => void
+  isEnglish?: boolean
+  onCtaClick?: () => void
 }
 
-export default function LPSteps({ title, steps, ctaText, onCTAClick }: LPStepsProps) {
+export default function LPSteps({ title, steps, ctaText, onCTAClick, isEnglish = false, onCtaClick }: LPStepsProps) {
   const router = useRouter()
   
   const handleCTAClick = () => {
-    if (onCTAClick) {
-      onCTAClick()
+    if (onCtaClick || onCTAClick) {
+      (onCtaClick || onCTAClick)!()
     } else if (ctaText) {
-      router.push('/lehrer-finden')
+      router.push(isEnglish ? '/find-teacher' : '/lehrer-finden')
     }
   }
 

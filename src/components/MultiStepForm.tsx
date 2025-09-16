@@ -306,14 +306,16 @@ export default function MultiStepForm() {
             Wo wohnen Sie?
           </h2>
           <label className="block text-gray-700 mb-2">Postleitzahl</label>
-          <input 
-            name="plz" 
-            value={form.plz} 
-            onChange={handleChangeWithAutoAdvance}
-            className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#059669] focus:outline-none text-gray-700"
-            placeholder="PLZ eingeben..."
-            maxLength={4}
-          />
+          <div className="relative">
+            <input 
+              name="plz" 
+              value={form.plz} 
+              onChange={handleChangeWithAutoAdvance}
+              className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#059669] focus:outline-none text-gray-700"
+              placeholder="PLZ eingeben..."
+              maxLength={4}
+            />
+          </div>
           {error && <div className="text-red-500 mt-2">{error}</div>}
           <div className="flex justify-between mt-8">
             <button 
