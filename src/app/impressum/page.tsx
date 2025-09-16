@@ -9,31 +9,62 @@ export default function Impressum() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="prose prose-lg max-w-none">
           <h1 className="text-4xl font-bold text-gray-900 mb-8">Impressum</h1>
-          
+
           <div className="space-y-8">
             <section>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">Kontaktadresse</h2>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-4">Betreiber der Website</h2>
               <div className="bg-gray-50 p-6 rounded-lg">
-                <p className="mb-2"><strong>Bildungsinstitut Fokus AG</strong></p>
-                <p className="mb-2">Notenmeister</p>
-                <p className="mb-2">Musterstrasse 123</p>
-                <p className="mb-2">8000 Zürich</p>
+                <p className="mb-2"><strong>Notenmeister</strong></p>
+                <p className="mb-2">Bildungsinstitut Fokus AG</p>
+                <p className="mb-2">Staffelstr 8</p>
+                <p className="mb-2">8045 Zürich</p>
                 <p className="mb-2">Schweiz</p>
-                <p className="mb-4">
-                  <strong>Telefon:</strong> 078 314 62 65<br />
-                  <strong>E-Mail:</strong> info@notenmeister.ch
-                </p>
-                <p className="mb-2">
-                  <strong>Handelsregister:</strong> CH-123.456.789<br />
-                  <strong>UID:</strong> CHE-123.456.789
-                </p>
               </div>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-4">Kontakt</h2>
+              <p className="mb-4">
+                <strong>E-Mail:</strong> dantico@fokus-nachhilfe.ch<br />
+                <strong>Support-Hotline:</strong> 078 314 62 65
+              </p>
             </section>
 
             <section>
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">Vertretungsberechtigte Personen</h2>
               <p>
-                Die Geschäftsführung der Bildungsinstitut Fokus AG
+                <strong>Geschäftsführung:</strong><br />
+                Giuseppe D&apos;Antico<br />
+                Liam Mörker<br />
+                Ciril Bullinger
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-4">Handelsregistereintrag</h2>
+              <p>
+                <strong>Firma:</strong> Bildungsinstitut Fokus AG<br />
+                <strong>Rechtsform:</strong> Aktiengesellschaft (AG)<br />
+                <strong>Handelsregister:</strong> Handelsregister des Kantons Zürich<br />
+                <strong>Sitz:</strong> Zürich
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-4">Mehrwertsteuer</h2>
+              <p>
+                <strong>UID-Nummer:</strong> CHE-123.456.789 MWST
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-4">Verantwortlich für den Inhalt</h2>
+              <p>
+                Giuseppe D&apos;Antico<br />
+                Bildungsinstitut Fokus AG<br />
+                Staffelstr 8<br />
+                8045 Zürich<br />
+                E-Mail: dantico@fokus-nachhilfe.ch
               </p>
             </section>
 
@@ -74,9 +105,9 @@ export default function Impressum() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">Rechtswirksamkeit</h2>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-4">Anwendbares Recht und Gerichtsstand</h2>
               <p>
-                Dieser Haftungsausschluss ist als Teil des Internetangebotes zu betrachten, von dem aus auf diese Seite verwiesen wurde. Sofern Teile oder einzelne Formulierungen dieses Textes der geltenden Rechtslage nicht, nicht mehr oder nicht vollständig entsprechen sollten, bleiben die übrigen Teile des Dokumentes in ihrem Inhalt und ihrer Gültigkeit davon unberührt.
+                Es gilt ausschliesslich schweizerisches Recht. Gerichtsstand ist Zürich, Schweiz.
               </p>
             </section>
           </div>
